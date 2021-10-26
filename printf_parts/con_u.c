@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   con_u.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:10:19 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/02 04:46:32 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 12:01:03 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/25 18:13:11 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-void	ft_putendl_fd(char *s, int fd)
+int	con_u(va_list ap)
 {
-	if (s != NULL)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}
+	long	tmp;
+	int		d;
+
+	tmp = va_arg(ap, long);
+	tmp %= ULONG_MAX;
+	ft_putnbr_fd(tmp, 1);
+	d = ft_strlen(ft_itoa(tmp));
+	return (d - 2);
 }

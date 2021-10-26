@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   con_s.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:10:19 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/02 04:46:32 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 12:00:46 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/26 00:14:04 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-void	ft_putendl_fd(char *s, int fd)
+int	con_s(va_list ap)
 {
-	if (s != NULL)
+	char	*tmp;
+	char	*str;
+	int		i;
+
+	tmp = va_arg(ap, char *);
+	if (tmp == NULL)
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
+		ft_putstr_fd("(null)", 1);
+		return (4);
 	}
+	i = (int)ft_strlen(tmp) + 1;
+	str = (char *)malloc(sizeof(char *) * i);
+	*(str + (--i)) = '\0';
+	while (--i >= 0)
+		*(str + i) = *(tmp + i);
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(tmp) - 2);
 }

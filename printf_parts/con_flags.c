@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   con_flags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:10:19 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/02 04:46:32 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 11:59:57 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/25 18:12:38 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-void	ft_putendl_fd(char *s, int fd)
+int	con_flags(va_list ap, const char *check)
 {
-	if (s != NULL)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}
+	t_cflags	t_con;
+	int			d;
+
+	t_con.conversion_flag = (char)*check;
+	d = con_junction(ap, t_con);
+	t_con.conversion_flag = 'a';
+	return (d);
 }

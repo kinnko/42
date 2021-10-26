@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   con_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:10:19 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/02 04:46:32 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 11:57:22 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/25 18:12:19 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-void	ft_putendl_fd(char *s, int fd)
+int	con_c(va_list ap)
 {
-	if (s != NULL)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}
+	char	tmp;
+
+	tmp = (char)va_arg(ap, int);
+	write(1, &tmp, sizeof(tmp));
+	return (-1);
 }

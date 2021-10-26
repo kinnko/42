@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   con_p.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:10:19 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/02 04:46:32 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 12:00:33 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/25 18:12:52 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-void	ft_putendl_fd(char *s, int fd)
+int	con_p(va_list ap)
 {
-	if (s != NULL)
-	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
-	}
+	long	tmp;
+	char	*dest;
+	int		d;
+
+	tmp = va_arg(ap, long);
+	write(1, "0", 1);
+	write(1, "x", 1);
+	dest = malloc(sizeof(char *) * (keep_dest(tmp, 16) + 1));
+	change_16base(tmp, dest, 16);
+	ft_putstr_fd(dest, 1);
+	d = ft_strlen(dest);
+	return (d);
 }

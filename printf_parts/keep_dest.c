@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   keep_dest.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:10:19 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/02 04:46:32 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 12:01:27 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/25 23:50:17 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-void	ft_putendl_fd(char *s, int fd)
+int	keep_dest(long tmp, long a)
 {
-	if (s != NULL)
+	int		i;
+	long	digits;
+
+	digits = 1;
+	i = 0;
+	while (digits > 0)
 	{
-		while (*s)
-			write(fd, s++, 1);
-		write(fd, "\n", 1);
+		if (tmp < digits * a)
+			return (i);
+		else if (tmp > digits * a - 1 && ++i > 0)
+			digits *= a;
 	}
+	return (i);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/02 02:14:52 by ainoue            #+#    #+#             */
-/*   Updated: 2021/10/25 15:12:20 by ainoue           ###   ########.fr       */
+/*   Created: 2021/10/25 18:10:50 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/26 00:15:29 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -57,5 +57,19 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(long n, int fd);
+int		ft_printf(const char *sw, ...);
+int		con_flags(va_list ap, const char *check);
+int		con_junction(va_list ap, t_cflags t_con);
+int		con_c(va_list ap);
+int		con_di(va_list ap);
+int		con_u(va_list ap);
+int		con_s(va_list ap);
+int		con_x(va_list ap);
+int		con_X(va_list ap);
+int		con_p(va_list ap);
+int		write_per(unsigned char c);
+int		keep_dest(long tmp, long a);
+void	change_16base(long tmp, char *str, long a);
+void	change_16upbase(long tmp, char *str, long a);
 
 #endif
