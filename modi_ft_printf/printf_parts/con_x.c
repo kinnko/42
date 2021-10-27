@@ -6,7 +6,7 @@
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 12:01:16 by ainoue            #+#    #+#             */
-/*   Updated: 2021/10/27 00:00:01 by ainoue           ###   ########.fr       */
+/*   Updated: 2021/10/27 11:46:28 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	con_X(va_list ap)
 	char		*dest;
 	int			d;
 
-	tmp = va_arg(ap, long long);
+	tmp = va_arg(ap, unsigned int);
 	dest = malloc(sizeof(char *) * (keep_dest(tmp, 16) + 1));
 	change_16upbase(tmp, dest, 16);
 	ft_putstr_fd(dest, 1);
@@ -33,7 +33,7 @@ int	con_x(va_list ap)
 	char		*dest;
 	int			d;
 
-	tmp = va_arg(ap, long long);
+	tmp = va_arg(ap, unsigned int);
 	dest = malloc(sizeof(char *) * (keep_dest(tmp, 16) + 1));
 	change_16base(tmp, dest, 16);
 	ft_putstr_fd(dest, 1);

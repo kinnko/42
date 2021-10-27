@@ -6,7 +6,7 @@
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:10:50 by ainoue            #+#    #+#             */
-/*   Updated: 2021/10/27 00:00:46 by ainoue           ###   ########.fr       */
+/*   Updated: 2021/10/27 16:21:49 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int		con_x(va_list ap);
 int		con_X(va_list ap);
 int		con_p(va_list ap);
 int		write_per(unsigned char c);
-int		keep_dest(long long tmp, long a);
-void	change_16base(long long tmp, char *str, long a);
-void	change_16upbase(long long tmp, char *str, long a);
+int		keep_dest(unsigned long long tmp, unsigned long long a);
+void	change_16base(unsigned long long tmp, char *str, unsigned long long a);
+void	change_16upbase(unsigned long long tmp, char *str, unsigned long long a);
 
 #endif

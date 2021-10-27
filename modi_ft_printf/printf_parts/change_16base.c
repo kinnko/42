@@ -6,63 +6,51 @@
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:56:58 by ainoue            #+#    #+#             */
-/*   Updated: 2021/10/26 23:59:04 by ainoue           ###   ########.fr       */
+/*   Updated: 2021/10/27 16:36:53 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
 
-void	change_16upbase(long long tmp, char *str, long a)
+void	change_16upbase(unsigned long long tmp, char *str, unsigned long long a)
 {
-	int		i;
-	long	digits;
-	int		flag;
+	unsigned long long	digits;
 
-	flag = 1;
 	digits = 1;
-	i = 0;
 	while (digits > 0)
 	{
-		if (tmp < digits * a)
+		if (tmp < digits * a || digits > ULLONG_MAX / 16)
 		{
 			if ((tmp / digits) > 9)
 				*str++ = 'A' + ((tmp / digits) - 10);
 			else
 				*str++ = '0' + (tmp / digits);
-			if (tmp == 15)
-				break ;
 			tmp -= (digits * (tmp / digits));
 			digits /= a;
 		}
-		else if (tmp > digits * a - 1 && ++i > 0)
+		else
 			digits *= a;
 	}
 	*str = '\0';
 }
 
-void	change_16base(long long tmp, char *str, long a)
+void	change_16base(unsigned long long tmp, char *str, unsigned long long a)
 {
-	int		i;
-	long	digits;
-	int		flag;
+	unsigned long long	digits;
 
-	flag = 1;
 	digits = 1;
-	i = 0;
 	while (digits > 0)
 	{
-		if (tmp < digits * a)
+		if (tmp < digits * a || digits > ULLONG_MAX / 16)
 		{
 			if ((tmp / digits) > 9)
 				*str++ = 'a' + ((tmp / digits) - 10);
 			else
 				*str++ = '0' + (tmp / digits);
-			if (tmp == 15)
-				break ;
 			tmp -= (digits * (tmp / digits));
 			digits /= a;
 		}
-		else if (tmp > digits * a - 1 && ++i > 0)
+		else
 			digits *= a;
 	}
 	*str = '\0';
