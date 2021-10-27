@@ -1,3 +1,7 @@
+modi_ft_printf は　メモリリークとprintfTesterででる一部のkoを修正してみたものです
+
+以下deepthoutの結果
+
 = Host-specific information ====================================================
 $> hostname; uname -msr
 c1r31s5.42tokyo.jp
