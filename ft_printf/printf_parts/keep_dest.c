@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   keep_dest.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainoue <ainoue.@student.42tokyo.f>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 11:41:21 by ainoue            #+#    #+#             */
-/*   Updated: 2021/05/03 05:02:16 by ainoue           ###   ########.fr       */
+/*   Created: 2021/09/07 12:01:27 by ainoue            #+#    #+#             */
+/*   Updated: 2021/10/27 17:11:53 by ainoue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h" 
 
-int	ft_isalpha(int c)
+int	keep_dest(unsigned long long tmp, unsigned long long a)
 {
-	if ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A'))
-		return (1);
-	else
-		return (0);
+	int					i;
+	unsigned long long	digits;
+
+	digits = 1;
+	i = 0;
+	while (digits != 0)
+	{
+		if (tmp > digits * a - 1 && ++i > 0)
+			digits *= a;
+		else
+			return (i);
+	}
+	return (i);
 }
